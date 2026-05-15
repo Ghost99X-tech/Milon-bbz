@@ -2,7 +2,7 @@ module.exports = {
   config: {
     name: "autosticker",
     version: "4.5",
-    author: "〲MAMUNツ࿐ T.T　o.O",
+    author: "〲MAMUNツ࿐ T.T　o.O+ milon",
     countDown: 1,
     role: 0,
     description: "Send a random sticker, view total count, or view all IDs.",
