@@ -12,7 +12,7 @@ module.exports = {
     name: "horny",
     aliases: ["hornyvid", "hvideo"],
     version: "1.7",
-    role: 0,
+    role: 2,
     author: "MahMUD",
     category: "adult",
     guide: {
