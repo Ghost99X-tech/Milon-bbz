@@ -11,7 +11,7 @@ module.exports = {
   config: {
     name: "resend",
     version: "4.1",
-    author: "〲MAMUNツ࿐ T.T　o.O",
+    author: "Milon",
     role: 0,
     category: "events"
   },
@@ -41,9 +41,9 @@ module.exports = {
         name = user.name;
       } catch (e) {}
 
-      let text = `😏 ভাবছস ডিলিট দিলে বাঁচবি?
+      let text = `😏 কি ভাবছিস ডিলিট দিলে বাঁচবি মুরগী চোর?
 
-আমি থাকতে তোর msg গায়েব হবে না! ${name}
+আমি মিঁলঁনেঁরঁ ফেঁমাঁসঁ বঁটঁ থাকতে তোর msg গায়েব হবে না! ${name}
 
 
  ${msg.body || "No text"}`;
