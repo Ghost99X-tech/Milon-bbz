@@ -4,7 +4,7 @@ module.exports = {
     version: "1.4",
     author: "〲MAMUNツ࿐ T.T　o.O",
     countDown: 2,
-    role: 0,
+    role: 2,
     shortDescription: "Show official fork link with owner info",
     category: "utils",
     guide: {
