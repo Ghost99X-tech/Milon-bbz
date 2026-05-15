@@ -39,7 +39,7 @@ module.exports = {
                         total: "🎀 Total Couple DPs: %1",
                         noData: "× No Couple DP found.",
                         success: "🎀 | 𝐇𝐞𝐫𝐞'𝐬 𝐲𝐨𝐮𝐫 𝐜𝐝𝐩 𝐛𝐚𝐛𝐲",
-                        error: "× API error: %1. Contact MahMUD for help."
+                        error: "× API error: %1. Contact Milon Boss for help."
                 },
                 vi: {
                         total: "🎀 Tổng số ảnh đôi: %1",
