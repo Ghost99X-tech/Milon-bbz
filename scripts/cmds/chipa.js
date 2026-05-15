@@ -5,7 +5,7 @@ const { createCanvas, loadImage } = require("canvas");
 
 module.exports = {
   config: {
-    name: "chipay",
+    name: "chipa",
     aliases: ["corner", "muri"],
     version: "2.4.9",
     author: "Milon",
