@@ -30,7 +30,7 @@ module.exports = {
                 },
                 en: {
                         noTarget: "• Baby, mention, reply, or provide UID of the target",
-                        error: "❌ An error occurred: contact MahMUD %1",
+                        error: "❌ An error occurred: contact Milon Boss %1",
                         success: "Effect elephant successful"
                 },
                 vi: {
