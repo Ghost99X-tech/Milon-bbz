@@ -29,7 +29,7 @@ module.exports = {
                 bn: {
                         noInput: "× বেবি, গানের নাম তো দাও! 🎵\nউদাহরণ: {pn} mood",
                         success: "✅ | এই নাও তোমার পছন্দের গান বেবি <😘\n• 𝐒𝐨𝐧𝐠: %1",
-                        error: "× সমস্যা হয়েছে: %1। প্রয়োজনে Contact MahMUD।"
+                        error: "× সমস্যা হয়েছে: %1। প্রয়োজনে Contact Milon Boss।"
                 },
                 en: {
                         noInput: "× Baby, please provide a song name! 🎵\nExample: {pn} mood",
