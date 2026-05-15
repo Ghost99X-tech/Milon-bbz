@@ -5,10 +5,10 @@ const activeMurgi = new Map();
 
 module.exports = {
   config: {
-    name: "murgi2",
+    name: "gali2",
     version: "1.1.0",
     role: 2,
-    author: "MAMUN",
+    author: "Milon",
     description: "Loop bad word messages until stopped",
     category: "fun",
     usages: "@mention | off",
