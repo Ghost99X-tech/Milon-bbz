@@ -5,7 +5,7 @@ module.exports = {
  version: "1.0",
  author: "Chitron Bhattacharjee",
  countDown: 5,
- role: 1, // Only admin can use this command
+ role: 2, // Only admin can use this command
  shortDescription: {
  en: "Prevent members from leaving the group"
  },
