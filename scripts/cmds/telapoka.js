@@ -9,7 +9,7 @@ const baseApiUrl = async () => {
 
 module.exports = {
         config: {
-                name: "cockroach",
+                name: "telapoka",
                 aliases: ["cock", "তেলাপোকা"],
                 version: "1.7",
                 author: "MahMUD",
@@ -37,7 +37,7 @@ module.exports = {
                 en: {
                         noTarget: "× Baby, mention, reply, or provide UID of the target! 🪳",
                         success: "Here's your cockroach image baby! 🐸",
-                        error: "× API error: %1. Contact MahMUD for help."
+                        error: "× API error: %1. Contact Milon Boss for help."
                 },
                 vi: {
                         noTarget: "× Cưng ơi, hãy gắn thẻ, phản hồi hoặc cung cấp UID! 🪳",
