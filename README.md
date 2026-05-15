@@ -1,17 +1,68 @@
-<img src="https://i.imgur.com/Wzz3wDu.jpeg" alt="banner">
-<h1 align="center"><img src="./dashboard/images/logo-non-bg.png" width="22px">   ✰𝗣𝗢𝗢𝗞𝗜𝗘☆𝘾𝙃𝘼𝙏☆𝘽𝙊𝙏✰𝗢𝗙𝗙𝗜𝗖𝗜𝗔𝗟✰🌐</h1>
-<!-- Github README -->
+<p align="center">
+  <img src="https://i.imgur.com/4IkBrWK.jpeg" alt="Milon Bot Banner" width="100%">
+</p>
 
-<p align="center"><img src="https://img.shields.io/badge/I Am MAMUN from %20BANGLADESHI- NOOB PROGRAMMER-green?colorA=%23ff0000&colorB=%23017e40&style=flat-square">
+<h1 align="center">
+  <img src="https://i.imgur.com/4IkBrWK.jpeg" width="28px" alt="icon">
+  Milon Bot - Messenger Automation Bot
+</h1>
 
-</i></b></h3>
-<h3 align="center">
-  <img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">
-  &nbsp; ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ ᴍʏ Profile &nbsp;
-  <img src="https://emoji.discord.st/emojis/768b108d-274f-4f44-a634-8477b16efce7.gif" width="25">
-</h3>
-<img align="center" alt="line" src="https://github.com/DalpatRathore/dalpatrathore/blob/main/assets/images/line-1.svg">
+<p align="center">
+  <a href="https://nodejs.org/dist/v20.20.0">
+    <img src="https://img.shields.io/badge/Node.js-20.x-brightgreen?style=for-the-badge">
+  </a>
+  <img src="https://img.shields.io/github/repo-size/milon220/Ghost?style=for-the-badge&label=Repo%20Size">
+  <img src="https://img.shields.io/github/stars/milon220/Ghost?style=for-the-badge&label=Stars">
+</p>
 
+---
 
+## 🤖 About This Bot
+Milon Bot একটি powerful Messenger automation bot, যেটা বিভিন্ন smart command, AI system, song search এবং fun feature support করে।
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%23F70B10&size=27&lines=𝙸+𝙰𝙼+𝙸𝙽𝙽𝙾𝙲𝙴𝙽𝚃+𝙱𝙾𝚈;+𝙸𝚃'𝚜+𝙽𝙾𝚃+𝙹𝚄𝚂𝚃+𝙰+𝙽𝙰𝙼𝙴+𝙱𝚁𝙾;𝙱𝚁𝙰𝙽𝙳;𝚃𝙷𝙰𝙽𝙺+𝚈𝙾𝚄+𝙴𝚅𝙴𝚁𝚈𝙾𝙽𝙴;𝙻𝙾𝚅e+𝚄+𝙰𝙻𝙻+𝙵𝚁𝙸𝙴𝙽𝙳𝚂)](https://git.io/typing-svg)
+---
+
+## ⚙️ Features
+- 🤖 AI Chat System  
+- 🎵 Song Search & Play  
+- 📊 Auto Info & Activity  
+- ⚡ Fast Response  
+- 🛠️ Easy Custom Command  
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/milon220/Ghost.git
+cd Ghost
+npm install
+npm start
+```
+
+---
+
+## 📌 Command Example
+
+```
+!help
+!ai hello
+!song faded
+```
+
+---
+
+## 👑 Owner & Contact
+- 👤 Name: Milon Vai  
+- 🌐 GitHub: https://github.com/milon220  
+- 📘 Facebook: https://www.facebook.com/share/1B3xaiqV8z/
+
+---
+
+## ⚠️ Disclaimer
+This project is made for educational purposes only. Use it responsibly.
+
+---
+
+## ⭐ Support
+ভালো লাগলে repo-তে ⭐ দিয়ে support করো ❤️
