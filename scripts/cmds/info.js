@@ -4,9 +4,9 @@ const moment = require("moment-timezone");
 module.exports = {
   config: {
     name: "info",
-    aliases: ["admininfo", "botinfo", "mamun", "ownerinfo"],
+    aliases: ["admininfo", "botinfo", "milon", "ownerinfo"],
     version: "1.4",
-    author: "亗🅼🅰ᥫᩣ🅼ᥫᩣ🆄🅽×͜×",
+    author: "MILON",
     countDown: 5,
     role: 0,
     shortDescription: { en: "Show bot & owner info" },
@@ -18,12 +18,12 @@ module.exports = {
   onStart: async function ({ message }) {
 
     // OWNER INFO
-    const authorName = "×᷼×ＭＡ☂Ｍ☂ＵＮ☆";
-    const ownAge = "19+";
-    const messenger = "https://m.me/mamun.8192";
-    const authorFB = "MA M UN Bb'z";
+    const authorName = "MD MILoN SARKAR";
+    const ownAge = "23+";
+    const messenger = "m.me/100081225144815";
+    const authorFB = "https://www.facebook.com/share/1CEgVwabm8/";
     const authorNumber = "+8801830981279";
-    const Status = "Single";
+    const Status = "Pure Single";
 
     // SAFE CATBOX VIDEO LINK
     const videoLink = "https://files.catbox.moe/a03xbs.mp4";
