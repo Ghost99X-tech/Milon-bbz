@@ -9,18 +9,18 @@ module.exports = {
     version: "1.1.7",
     author: "Milon Pro",
     countDown: 5,
-    role: 0,
+    role: 2,
     category: "fun",
     description: "Create a funny hijla image with an oval/face-shaped pfp.",
     guide: "{pn} @mention or reply"
   },
 
 /* --- [ 🔐 FILE_CREATOR_INFORMATION ] ---
- * 🤖 BOT NAME: MILON BOT
- * 👤 OWNER: MILON HASAN
- * 🔗 FACEBOOK: https://www.facebook.com/share/17uGq8qVZ9/
- * 📞 WHATSAPP: +880 1912603270
- * 📍 LOCATION: NARAYANGANJ, BANGLADESH
+ * 🤖 BOT NAME: মিঁলঁনেঁরঁ ফেঁমাঁসঁ বঁটঁ
+ * 👤 OWNER: MD MILON SARKAR
+ * 🔗 FACEBOOK: https://www.facebook.com/share/18ocWhgonz/
+ * 📞 WHATSAPP: +880 16******14
+ * 📍 LOCATION: KURIGRAM, BANGLADESH
  * 🛠️ PROJECT: MILON BOT PROJECT (2026)
  * --------------------------------------- */
 
