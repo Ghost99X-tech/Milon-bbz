@@ -36,7 +36,7 @@ module.exports = {
                 en: {
                         noMention: "× Baby, please mention someone! 💞",
                         success: "𝐇𝐞𝐫𝐞’𝐬 𝐲𝐨𝐮𝐫 𝐢𝐦𝐚𝐠𝐞 𝐛𝐚𝐛𝐲 <😘",
-                        error: "× API error: %1. Contact MahMUD for help."
+                        error: "× API error: %1. Contact Milon Boss for help."
                 },
                 vi: {
                         noMention: "× Cưng ơi, hãy đề cập đến ai đó! 💞",
