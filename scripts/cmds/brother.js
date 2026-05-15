@@ -33,7 +33,7 @@ module.exports = {
                         noTarget: "× বেবি, একজনকে ট্যাগ করো অথবা রিপ্লাই দাও! 🎀",
                         wait: "⌛ তোমার ছবিটি তৈরি করছি... একটু অপেক্ষা করো বেবি! <😘",
                         success: "𝐋𝐢𝐟𝐞'𝐬 𝐛𝐞𝐭𝐭𝐞𝐫 𝐰𝐢𝐭𝐡 𝐚 𝐁𝐫𝐨𝐭𝐡𝐞𝐫 𝐛𝐲 𝐲𝐨𝐮𝐫 𝐬𝐢𝐝𝐞 🎀",
-                        error: "× সমস্যা হয়েছে: %1। প্রয়োজনে Contact MahMUD।"
+                        error: "× সমস্যা হয়েছে: %1। প্রয়োজনে Contact Milon Boss।"
                 },
                 en: {
                         noTarget: "× Baby, please tag or reply to someone! 🎀",
