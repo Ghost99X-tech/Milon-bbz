@@ -25,7 +25,7 @@ module.exports = {
         langs: {
                 bn: {
                         noTarget: "• বেবি, কাকে tuntun বানাবে? মেনশন, রিপ্লাই বা UID দাও",
-                        error: "❌ An error occurred: contact MahMUD %1",
+                        error: "❌ An error occurred: contact Milon Boss %1",
                         success: "Effect tuntun successful"
                 },
                 en: {
