@@ -1,63 +1,58 @@
 const axios = require("axios");
-const fs = require("fs");
+const fs = require("fs-extra");
 const path = require("path");
 
 module.exports = {
-  config: {
-    name: "text_voice",
-    version: "1.0.0",
-    author: "Sᴀʜᴜ x Mᴏʜᴀᴍᴍᴀᴅ Aᴋᴀsʜ",
-    countDown: 5,
-    role: 0,
-    shortDescription: "Tᴇxᴛ Tᴏ Vᴏɪᴄᴇ Rᴇᴘʟʏ",
-    longDescription: "Sᴇɴᴅ sᴘᴇᴄɪғɪᴄ ᴛᴇxᴛ ᴀɴᴅ ɢᴇᴛ ᴀ ᴄᴜᴛᴇ ɢɪʀʟ ᴠᴏɪᴄᴇ Rᴇᴘʟʏ",
-    category: "system",
-  },
+config: {
+name: "text_voice",
+version: "1.0.5",
+author: "Milon",
+countDown: 1, // সময় কমিয়ে ১ সেকেন্ড করা হলো
+role: 0,
+shortDescription: "Ultra Fast Voice Reply",
+longDescription: "Sends specific voice messages instantly using local cache",
+category: "system"
+},
 
-  onChat: async function ({ event, message }) {
-    const { body } = event;
-    if (!body) return;
+onStart: async function () {},
 
-    const textAudioMap = {
-      "i love you": "https://files.catbox.moe/npy7kl.mp3",
-      "mata beta": "https://files.catbox.moe/5rdtc6.mp3",
-    };
+onChat: async function ({ event, message }) {
+if (!event.body) return;
 
-    const key = body.trim().toLowerCase();
-    const audioUrl = textAudioMap[key];
-    if (!audioUrl) return;
+const input = event.body.toLowerCase().trim();
 
-    const cacheDir = path.join(__dirname, "cache");
-    if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
+// --- কি-ওয়ার্ড এবং লিংক ---
+const voiceMap = {
+"i love you": "https://files.catbox.moe/reh1hr.mp4",
+"milon": "https://files.catbox.moe/hwgaqs.mp4",
+"dirim": "https://files.catbox.moe/1rk48q.mp4",
+"hello": "লিংক_এখানে"
+};
 
-    const filePath = path.join(cacheDir, `${encodeURIComponent(key)}.mp3`);
+if (voiceMap[input]) {
+const audioUrl = voiceMap[input];
+const cacheDir = path.join(__dirname, "cache", "voices");
+fs.ensureDirSync(cacheDir);
 
-    try {
-      const response = await axios({
-        method: "GET",
-        url: audioUrl,
-        responseType: "stream",
-      });
+// ফাইলের নাম কি-ওয়ার্ড অনুযায়ী সেভ হবে যাতে বারবার ডাউনলোড না লাগে
+const fileName = `${Buffer.from(input).toString('hex')}.mp3`;
+const filePath = path.join(cacheDir, fileName);
 
-      const writer = fs.createWriteStream(filePath);
-      response.data.pipe(writer);
+try {
+// যদি ফাইলটি আগে থেকেই ডাউনলোড করা থাকে, তবে সরাসরি পাঠিয়ে দিবে
+if (fs.existsSync(filePath)) {
+return await message.reply({ attachment: fs.createReadStream(filePath) });
+}
 
-      writer.on("finish", async () => {
-        await message.reply({
-          body: "Vᴏɪᴄᴇ Pʟᴀʏᴇᴅ Sᴜᴄᴄᴇssғᴜʟʟʏ 💖",
-          attachment: fs.createReadStream(filePath),
-        });
+// ফাইল না থাকলে ডাউনলোড করবে (শুধু প্রথমবার)
+const response = await axios.get(audioUrl, { responseType: "arraybuffer" });
+fs.writeFileSync(filePath, Buffer.from(response.data));
 
-        fs.unlink(filePath, () => {});
-      });
+await message.reply({ attachment: fs.createReadStream(filePath) });
 
-      writer.on("error", () => {
-        message.reply("Vᴏɪᴄᴇ Pʟᴀʏ Fᴀɪʟᴇᴅ 😅");
-      });
-    } catch (error) {
-      message.reply("Vᴏɪᴄᴇ Pʟᴀɪɴɢ Eʀʀᴏʀ 😅");
-    }
-  },
-
-  onStart: async function () {},
+} catch (error) {
+console.error("Error sending voice:", error);
+}
+}
+}
 };
