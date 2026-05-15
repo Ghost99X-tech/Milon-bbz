@@ -8,7 +8,7 @@ module.exports = {
     name: "up1",
     aliases: ["up1","upt1"],
     version: "4.2",
-    author: "〲MAMUNツ࿐ T.T　o.O",
+    author: "Milon",
     role: 0,
     shortDescription: "Uptime Dashboard",
     category: "bot running timer",
