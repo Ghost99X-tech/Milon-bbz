@@ -7,7 +7,7 @@ module.exports = {
     config: {
         name: "propose",
         version: "3.0",
-        author: "〲MAMUNツ࿐ T.T　o.O",
+        author: "Milon",
         countDown: 10,
         role: 0,
         description: "Propose someone with gender-based images",
