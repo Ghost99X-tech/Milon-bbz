@@ -9,7 +9,7 @@ module.exports = {
   config: {
     name: "slap",
     version: "3.0",
-    author: "MAMUN ",
+    author: "Milon ",
     countDown: 5,
     role: 0,
     shortDescription: "Custom slap image with circular avatars",
