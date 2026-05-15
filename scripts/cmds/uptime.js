@@ -4,7 +4,7 @@ module.exports = {
   config: {
     name: "uptime",
     version: "3.0",
-    author: "〲MAMUNツ࿐ T.T　o.O",
+    author: "〲MAMUNツ࿐ T.T　o.O+Milon",
     countDown: 5,
     role: 0,
     shortDescription: "Pro uptime status",
@@ -29,11 +29,11 @@ module.exports = {
     const ping = Date.now() - start;
 
     const msg = `
-╔══ ♡┋ 𝙋𝙊𝙊𝙆𝙄𝙀 ᥫ᭡🎀🙂❀══╗
+╔══ ♡┋ মিঁলঁনেঁরঁ ফেঁমাঁসঁ বঁটঁ ᥫ᭡🎀🙂❀══╗
 
-🤖 Bot:  ♡┋ 𝙋𝙊𝙊𝙆𝙄𝙀 ᥫ᭡🎀🙂
+🤖 Bot:  ♡┋ ─꯭─⃝͎̽𓆩𝐃𝐚𝐫𝐤 𝐆𝐡𝐨𝐬𝐭 𝐗 ‣᭄𓆪___//😽🩵🪽 
 
-👑 Owner: 〲MAMUNツ࿐ T.T　o.O
+👑 Owner: MD MILON SARKAR
 
 ⏰ Uptime: ${d}d ${h}h ${m}m ${s}s
 
@@ -45,7 +45,7 @@ module.exports = {
 
 📡 Platform: ${os.platform()}
 
-╚══ ♡┋ 𝙋𝙊𝙊𝙆𝙄𝙀 ᥫ᭡🎀🙂❀══╝
+╚══ ♡┋ মিঁলঁনেঁরঁ ফেঁমাঁসঁ বঁটঁ ᥫ᭡🎀🙂❀══╝
 `;
 
     message.reply(msg);
