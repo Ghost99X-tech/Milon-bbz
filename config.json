@@ -12,25 +12,29 @@
   "antiInbox": false,
   "language": "en",
   "notesLanguage": "change language using ISO 639-1 code",
-  "nickNameBot": "𝐘𝐎𝐔𝐑 ♲︎︎︎ 𝐁𝐁𝐙 ♡︎♥︎",
-  "prefix": "-",
+  "nickNameBot": "─꯭─⃝͎̽𓆩𝐃𝐚𝐫𝐤 𝐆𝐡𝐨𝐬𝐭 𝐗 ‣᭄𓆪___//😽🩵🪽",
+  "prefix": "#",
   "adminOnly": {
     "enable": false,
     "ignoreCommand": []
   },
   "adminBot": [
-    "61589546816594"
+    "100060494911394",
+"100081225144815",
+"61587807315292",
+"61581330924246",
+"61557992226296"
   ],
   "reactUnsend": {
     "enable": true,
     "onlyAdmin": true,
-    "emojis": ["😦", "😡"],
+    "emojis": ["😦", "😡", "🤧"],
     "notes": "If enable = true, bot will unsend any message reacted with these emojis. If onlyAdmin = true, only adminBot IDs can trigger it."
   },
   "whiteListMode": {
     "enable": false,
     "whiteListIds": [
-      "61584580662932"
+      "100081225144815"
     ],
     "notes": "If enabled, only IDs in whiteListIds can use the bot."
   },
@@ -148,4 +152,4 @@
     "autoReconnect": false,
     "notes": "Docs: https://github.com/ntkhang03/fb-chat-api/blob/master/DOCS.md#apisetoptionsoptions"
   }
-  }
+}
