@@ -10,7 +10,7 @@ module.exports = {
   config: {
     name: "top",
     version: "3.5",
-    author: "xalman",
+    author: "Milon",
     role: 0,
     shortDescription: { en: "Top Richest with Profile Pictures" },
     longDescription: { en: "Top 15 richest users with high-contrast text and profile pictures." },
