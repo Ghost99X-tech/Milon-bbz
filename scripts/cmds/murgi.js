@@ -1,102 +1,94 @@
-const delay = (ms) => new Promise(res => setTimeout(res, ms));
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 
-// active loop storage
-const activeMurgi = new Map();
+const baseApiUrl = async () => {
+        const base = await axios.get("https://raw.githubusercontent.com/mahmudx7/HINATA/main/baseApiUrl.json");
+        return base.data.mahmud;
+};
 
 module.exports = {
-  config: {
-    name: "murgi",
-    version: "1.1.0",
-    role: 2,
-    author: "Akash Edit",
-    description: "Loop bad word messages until stopped",
-    category: "fun",
-    usages: "@mention | off",
-    cooldowns: 5,
-  },
+        config: {
+                name: "murgi",
+                aliases: ["chicken", "মুরগি"],
+                version: "1.7",
+                author: "MahMUD",
+                countDown: 10,
+                role: 0,
+                description: {
+                        bn: "কাউকে মুরগি বানিয়ে মজার ছবি তৈরি করুন",
+                        en: "Create a funny murgi (hen) image of someone",
+                        vi: "Tạo một bức ảnh gà vui nhộn về ai đó"
+                },
+                category: "fun",
+                guide: {
+                        bn: '   {pn} <@tag/reply/UID>: কাউকে মুরগি বানাতে ট্যাগ করুন',
+                        en: '   {pn} <@tag/reply/UID>: Tag/Reply to make someone murgi',
+                        vi: '   {pn} <@tag/reply/UID>: Gắn thẻ để biến ai đó thành gà'
+                }
+        },
 
-  onStart: async function({ message, event, args }) {
-    // OFF command
-    if (args[0] && args[0].toLowerCase() === "off") {
-      if (activeMurgi.has(event.threadID)) {
-        activeMurgi.set(event.threadID, false);
-        return message.reply("🛑 Murgi mode stopped.");
-      } else {
-        return message.reply("⚠️ Murgi mode is not running.");
-      }
-    }
+        langs: {
+                bn: {
+                        noTarget: "× বেবি, কাউকে মেনশন দাও, রিপ্লাই করো অথবা UID দাও! 🐓",
+                        success: "এই নাও তোমার মুরগি ছবি বেবি! 🐸",
+                        error: "× সমস্যা হয়েছে: %1। প্রয়োজনে Contact Milon Boss।"
+                },
+                en: {
+                        noTarget: "× Baby, mention, reply, or provide UID of the target! 🐓",
+                        success: "Here's your murgi image baby! 🐸",
+                        error: "× API error: %1. Contact Milon Boss for help."
+                },
+                vi: {
+                        noTarget: "× Cưng ơi, hãy gắn thẻ, phản hồi hoặc cung cấp UID! 🐓",
+                        success: "Ảnh con gà của cưng đây! 🐸",
+                        error: "× Lỗi: %1. Liên hệ MahMUD để hỗ trợ."
+                }
+        },
 
-    const mention = Object.keys(event.mentions)[0];
-    if (!mention) {
-      return message.reply("Please @mention a target first!");
-    }
+        onStart: async function ({ api, event, args, message, getLang }) {
+                const authorName = String.fromCharCode(77, 97, 104, 77, 85, 68);
+                if (this.config.author !== authorName) {
+                        return api.sendMessage("You are not authorized to change the author name.", event.threadID, event.messageID);
+                }
 
-    const name = event.mentions[mention];
-    const arraytag = [{ id: mention, tag: name }];
+                const { mentions, messageReply } = event;
+                let id;
 
-    const messages = [
-      "খা*নকির পোলা রেডি তো চু*দা খাওয়ার জন্য 😈 ",
-        "এখন তোর মার দুধ দরে ঘুমামু সকালে তোর বাপরে পুকটি মারতে জামু গুড নাইট ছোট 😚",
-        "শুন খানকির পোলা ইডেট করতে করতে মইরা যা পোস্ট কইরা ফেমাস কর আমারে, 🙄",
-        "গালাগালি করতে করতে তোর বুরি মারে সস্তা বানিয়ে ফেলছস",
-        "এই ইহুদির পুত এসব ছাড়া খানকির পোলা কি পারছ",
-        "─────কানা তোর মার কালা পুশির যে গন্ধ তুই এটা দিয়ে কিভাবে বের হইলি শালা আবার ডুকে যা 🤣",
-        "─────তোর আব্বুর এর নাম নিয়ে আর কতো চলবি গরিবের বাচ্চা🤣",
-        "─────ফকিন্নির পোলা টিনের ঘরের মুচি🤣",
-        "─────তোর মার মতো বেড়ি আমার ধনের গোড়ার বাল কাটতে রাখি জানু বেগম এর এ যোগ্যতা ও নাই🤣",
-        "তর মারে ১২ মাস চুদে গেলেও ওর ভোদার কিছু হবে না কারন মাগি তো ভোদা লোহা বানায় দিছে 😹💥🦶",
-        "────তোর মারে চুইদা জীবনের সবচাইতে বড় ভুল করছিলাম আর এই ভুলের সাথে এখন পেতে হচ্ছে। তোর মত নাস্তিক জন্ম হইয়া। 🙂😝",
-        "️️️️️⎯⎯খানকির পোলা সিন না দিলে তোর মার বোদা কামড়ায়া খেয়ে ফেলবো। 😂😦",
-        "—♡শেষ নিশ্বাস পর্যন্ত আপনার মাকে চুদতে  চাই কি বলেন আপনি-!! ">"♡🩷🙂🫶",
-        "নডির পুত সময় থাকতে ভালো হো খানকির পোলা ফেরাউনের বাচ্চা গালাগালি করা সভাব হয়ে গেছে চুইদ্দা কিন্তু মাইরা লামু",
-        " তোর মারে নিয়ে কালকো পোস্ট দিমু🤡",
-        " নডির পুত সময় থাকতে ভালো হো খানকির পোলা ফেরাউনের বাচ্চা গালাগালি করা সভাব হয়ে গেছে চুইদ্দা কিন্তু মাইরা লামু",
-        " তোর লেংটা মায়রে বিলাইয়ের ধো*ন দিয়ে চুদি 🤣🤣😂",
-        " ────তোর মারে চুইদা জীবনের সবচাইতে বড় ভুল করছিলাম আর এই ভুলের সাথে এখন পেতে হচ্ছে। তোর মত নাস্তিক জন্ম হইয়া। 🙂😝",
-        "‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌ ✧˖─‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‎─‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‎─‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‌‎Ꮗ ˚ তোর মারে চুদি, বরফ শীতল দেশে নিয়ে, মাগির পুত 🥵😹😹 ",
-        " তর মারে জনগণের মধ্যে ফালাইয়া চোদবো 😹👋",
-        " ______ মাগি পাড়ার ছিঁড়া কন্ডম দিয়ে তোর বোনরে চোদি!-)🤣🤣",
-        " তোর মারে পাকিস্তানের সাবেক প্রেসিডেন্ট ট্রাম্প প্রশাসন সেজে চুদি",
-        "শীতের কম্পলের তোলে ফালাইয়া তোর মায়রে ধ!র্ষণ করবো উজানী মা!গীর পোলা",
-        " তোর মায়রে উড়ন্ত ✈️বিমানে 💤ঘুমন্ত অবস্থায় লেংটা করে সুদী",
-        " ─── এই কাইল্লা ফাডা খামকির ছেলে আমার ১২ ইঞ্চি ধন দিয়া এমন বাড়ি দিমু তর বাবার নাম ভুলে যাবি খনিকের পোলা কমেন্ট বক্সে আব্লামি করিস কেন সুয়ারের ৪ নাম্বার বাচ্চা -)😹💨",
-        " নাস্তিক।🦶😹 _____ তোর বোনের ভোদায় ওয়াক থু নডির বাচ্চা",
-        " ⎯⎯⎯ এ নাস্তিক মাগির পোলা তোর মারে হিন্দু বৌদ্ধ খ্রিস্টান দিয়ে চুদাবো😹✋",
-        " তর মারে গুলিস্তানের অলিতে গলিতে চিপায় চাপায় লেংটা করে চুদি 😹",
-        " ────তোর মার কপালে জুতা দিয়া পিটাইতে হইবো ওই খানকিমাগী কেন তোরে জন্ম দিলো।🙂😊🎀",
-        " ⎯⎯⎯ এ মাগীরপুত তোর মারে ঠাকুরগাঁও নিয়ে ঠাকুর দিয়ে চুদবো!😹✋",
-        " কালা ফাডা মাগির পোলা",
-        " তর মারে চুদি মাগির পোলা ৩। ফুট 😹👋",
-        "___বৈশাখী ঝরের মধ্যে তোর মাকে মাঠে ফেলে চুদিহহহ বান্ধির পুলা-//🌽🐹🍾🧜‍♀️ ",
-        " তর মারে কুকুর দিয়ে চুদাবো মাগির পোলা",
-        " ️️️️️⎯⎯  তোর মার বোদার মাংস কাইট্টা কুত্তারে খানকির পোলা সিন দে তোর মাকে হিরো আলমকে দিয়া চোদাবো সিন না দিলে।😹🖐️",
-        " ️️️️️⎯⎯ কিরে বান্দির পোলা তুই নাকি হ্যাকার তোর মার ভোঁদার মধ্যে দাঁড়াইয়া মুইতা দিমু।🙄💔",
-        "—♡শেষ নিশ্বাস পর্যন্ত আপনার মাকে চুদতে  চাই কি বলেন আপনি-!! ">"♡🩷🙂🫶 ",
-        " ️️️️️⎯⎯   কিরে পা চাটা কুত্তা মাগির পুত ? তোর মারে নাকি তোর দাদা সুদে।😔😦",
-        " ___তর মার ভুদায় ডিজেল ডেলে আগুুন লাগিয়া  দূর দিমো মাগির পোলা  //🌽🐹🍾🧜‍♀️",
-        " তর মারে ১২ মাস চুদে গেলেও ওর ভোদার কিছু হবে না কারন মাগি তো ভোদা লোহা বানায় দিছে 😹💥🦶",
-        "😹_____ তোর কচি বোনকে বিয়ে দিবি রেন্ডি মাগির বাচ্চা!👅 ",
-    ];
+                if (Object.keys(mentions).length > 0) {
+                        id = Object.keys(mentions)[0];
+                } else if (messageReply) {
+                        id = messageReply.senderID;
+                } else if (args[0] && !isNaN(args[0])) {
+                        id = args[0];
+                }
 
-    activeMurgi.set(event.threadID, true);
-    message.reply("🔥 Murgi mode started.");
+                if (!id) return message.reply(getLang("noTarget"));
 
-    try {
-      while (activeMurgi.get(event.threadID)) {
-        for (const msg of messages) {
-          if (!activeMurgi.get(event.threadID)) break;
+                const cacheDir = path.join(__dirname, "cache");
+                if (!fs.existsSync(cacheDir)) fs.mkdirSync(cacheDir);
+                const filePath = path.join(cacheDir, `murgi_${id}.png`);
 
-          await delay(2500);
-          message.reply({
-            body: `${name}\n${msg}`,
-            mentions: arraytag
-          });
+                try {
+                        api.setMessageReaction("🐓", event.messageID, () => {}, true);
+                        
+                        const baseUrl = await baseApiUrl();
+                        const url = `${baseUrl}/api/murgi?user=${id}`;
+
+                        const response = await axios.get(url, { responseType: "arraybuffer" });
+                        fs.writeFileSync(filePath, Buffer.from(response.data));
+
+                        return message.reply({
+                                body: getLang("success"),
+                                attachment: fs.createReadStream(filePath)
+                        }, () => {
+                                if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+                        });
+
+                } catch (err) {
+                        console.error("Murgi Error:", err);
+                        if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+                        return message.reply(getLang("error", err.message));
+                }
         }
-      }
-    } catch (err) {
-      console.error(err);
-      activeMurgi.delete(event.threadID);
-      message.reply("Something went wrong!");
-    }
-  }
 };
